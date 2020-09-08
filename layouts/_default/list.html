@@ -13,6 +13,7 @@
   <li class="post-list">
     <span class="date">{{ .Date.Format "2006/01/02" }}</span>
     <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
+    <span class="categories">[{{ with .Params.categories }}{{ delimit . ","}}{{ end }}]</span>
   </li>
   {{ end }}
 </ul>
