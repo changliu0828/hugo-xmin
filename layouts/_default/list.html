@@ -12,15 +12,15 @@
   {{ range (where $pages "Section" "!=" "") }}
   <li class="post-list">
     <span class="date">{{ .Date.Format "2006/01/02" }}</span>
-    <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
-    <div class="categories">
+    <span class="categories">
       {{ with .Params.categories }}
       {{ range . }}
       {{ $category := . | urlize }}
-      [<a href = '{{ (printf "/categories/%s/" $category) }}'>{{ . }}</a>]
+      <i class="far fa-folder"></i><a href = '{{ (printf "/categories/%s/" $category) }}'>{{ . }}</a>
       {{ end }}
       {{ end }}
-    </div>
+    </span>
+    <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
   </li>
   {{ end }}
 </ul>
