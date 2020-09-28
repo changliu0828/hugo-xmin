@@ -11,7 +11,11 @@
   {{ if .IsHome }}{{ $pages = .Site.RegularPages }}{{ end }}
   {{ range (where $pages "Section" "!=" "") }}
   <li class="post-list">
-    <span class="date">{{ .Date.Format "2006/01/02" }}</span>
+    <h3><a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a></h3>
+    <div>
+      {{ .Summary}}
+    </div>
+    <i class="far fa-calendar-check"></i><span class="date">{{ .Date.Format "2006/01/02" }}</span>
     <span class="categories">
       {{ with .Params.categories }}
       {{ range . }}
@@ -20,7 +24,7 @@
       {{ end }}
       {{ end }}
     </span>
-    <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
+    <hr>
   </li>
   {{ end }}
 </ul>
