@@ -13,7 +13,12 @@
     <nav>
     <ul class="menu">
       {{ range .Site.Menus.main }}
-      <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+        <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+      {{ end }}
+      {{ if eq .Site.Language.Lang "en" }}
+        <li id="change_lang"><i class="fas fa-globe-asia"></i><a href="/">中/EN</a></li>
+      {{ else }}
+        <li id="change_lang"><i class="fas fa-globe-asia"></i><a href="/en">中/EN</a></li>
       {{ end }}
     </ul>
     <hr/>
